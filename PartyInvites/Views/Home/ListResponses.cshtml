@@ -1,0 +1,35 @@
+﻿@model IEnumerable<PartyInvites.Models.GuestResponse>
+
+<div class="text-center p-2">
+    <h2 class="text-center">
+        Here is the list of people attending the party
+    </h2>
+    <table class="table table-bordered table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Functions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (GuestResponse r in Model)
+            {
+                <tr>
+                    <td>@r.Name</td>
+                    <td>@r.Email</td>
+                    <td>@r.Phone</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@r.Id" class="btn btn-info">Details</a>
+                        <a asp-action="Edit" asp-route-id="@r.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@r.Id" class="btn btn-danger">Delete</a>
+@*                         <form asp-action="Delete" asp-route-id="@r.Id" class="btn btn-danger">
+                            <button type="button" ></button>
+                        </form> *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
